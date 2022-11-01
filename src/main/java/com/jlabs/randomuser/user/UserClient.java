@@ -1,6 +1,5 @@
 package com.jlabs.randomuser.user;
 
-import com.jlabs.randomuser.user.response.Results;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,14 +26,12 @@ class UserClient {
     }
 
     List<UserDTO> users() {
-        Results results = randomUserProxy.getResults(restTemplate, url);
-        if (results == null) {
-            return new ArrayList<>(0);
-        }
-        return results.getResults()
-                .stream()
-                .map(userMapper::resultToUserDTO)
-                .toList();
+        return randomUserProxy.getResults(restTemplate, url)
+                .map(results -> results.getResults()
+                        .stream()
+                        .map(userMapper::resultToUserDTO)
+                        .toList())
+                .orElse(new ArrayList<>(0));
     }
 
 }

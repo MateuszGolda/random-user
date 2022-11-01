@@ -1,6 +1,7 @@
 
 package com.jlabs.randomuser.user.response;
 
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -20,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class Registered {
 
     @JsonProperty("date")
-    private String date;
+    private ZonedDateTime date;
     @JsonProperty("age")
     private Integer age;
     @JsonIgnore
@@ -38,19 +39,19 @@ public class Registered {
      * @param date
      * @param age
      */
-    public Registered(String date, Integer age) {
+    public Registered(ZonedDateTime date, Integer age) {
         super();
         this.date = date;
         this.age = age;
     }
 
     @JsonProperty("date")
-    public String getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
     @JsonProperty("date")
-    public void setDate(String date) {
+    public void setDate(ZonedDateTime date) {
         this.date = date;
     }
 
